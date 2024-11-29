@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla para Definir tu Marca Personal</title>
+    <style>
+        body {
+            font-family: 'Arimo', sans-serif;
+            background-color: #E5EBF4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .output {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        #cta {
+            color: #22C0DC;
+            margin-top: 20px;
+            text-align: center;
+        }
+        #cta button {
+            background-color: #01BD39;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #cta button:hover {
+            background-color: #019B31;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Definir tu Marca Personal</h1>
+    <p>Completa los campos para recibir un plan estratégico personalizado para construir tu marca personal.</p>
+
+    <div class="section">
+        <label for="skills">1. ¿Qué habilidades te diferencian?</label>
+        <textarea id="skills" rows="3" style="width: 100%;" placeholder="Ejemplo: Comunicación, gestión de proyectos..."></textarea>
+    </div>
+
+    <div class="section">
+        <label for="problems">2. ¿Qué problema solucionas para tus clientes?</label>
+        <textarea id="problems" rows="3" style="width: 100%;" placeholder="Ejemplo: Ayudo a emprendedores a gestionar sus agendas..."></textarea>
+    </div>
+
+    <div class="section">
+        <label for="perception">3. ¿Cómo quieres que te perciban profesionalmente?</label>
+        <textarea id="perception" rows="3" style="width: 100%;" placeholder="Ejemplo: Profesional, confiable, innovador..."></textarea>
+    </div>
+
+    <button onclick="generateBrandPlan()">Generar Plan de Marca</button>
+
+    <div class="section output" id="output" style="display:none;"></div>
+
+    <div id="cta">
+        <p>Descubre el Secreto de Reinventarse Profesionalmente en Solo 14 Días</p>
+        <button onclick="window.location.href='https://klicana.work/Ecpzgd'">
+            ¡SÍ! INSCRIBIRME EN “ASISTENTE VIRTUAL EN 14 DÍAS”
+        </button>
+    </div>
+
+    <script>
+        function generateBrandPlan() {
+            const skills = document.getElementById('skills').value.trim();
+            const problems = document.getElementById('problems').value.trim();
+            const perception = document.getElementById('perception').value.trim();
+
+            if (!skills || !problems || !perception) {
+                alert('Por favor, completa todos los campos.');
+                return;
+            }
+
+            const skillList = skills.split(',').map(skill => skill.trim());
+            const suggestions = `
+                <h2>Plan Estratégico para tu Marca Personal</h2>
+                <h3>1. Habilidades:</h3>
+                <p>Tus habilidades clave (${skillList.join(', ')}) te posicionan como alguien único en tu campo. Usa estas habilidades para diferenciarte en tu sector.</p>
+
+                <h3>2. Problema que solucionas:</h3>
+                <p>Tu enfoque en resolver "${problems}" debe ser el núcleo de tu propuesta de valor. Asegúrate de comunicarlo en tus perfiles profesionales y en tus interacciones con clientes.</p>
+
+                <h3>3. Percepción Profesional:</h3>
+                <p>Si deseas ser percibido como "${perception}", usa elementos visuales coherentes: colores (${getColorSuggestion(perception)}), tipografía profesional y un lenguaje claro y directo.</p>
+
+                <h3>Recomendaciones:</h3>
+                <ul>
+                    <li>Crea un portafolio que destaque tus habilidades principales (${skillList[0]} y ${skillList[1] || 'otra habilidad clave'}).</li>
+                    <li>Usa redes como LinkedIn para conectar con clientes que busquen soluciones como las que ofreces.</li>
+                    <li>Diseña un logo y elementos visuales usando herramientas como Canva, basados en colores y estilos que reflejen "${perception}".</li>
+                    <li>Publica contenido regularmente en redes sociales que resalte cómo solucionas "${problems}".</li>
+                </ul>
+            `;
+
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = suggestions;
+            outputDiv.style.display = 'block';
+        }
+
+        function getColorSuggestion(perception) {
+            if (perception.toLowerCase().includes('confiable')) return 'azul y blanco';
+            if (perception.toLowerCase().includes('innovador')) return 'colores vibrantes como naranja o verde';
+            if (perception.toLowerCase().includes('profesional')) return 'negro y gris con acentos azul oscuro';
+            return 'colores que te representen personalmente';
+        }
+    </script>
+</body>
+</html>
